@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
+  resources :students, only: :index do
+    get :search
+  end
+  
+  resources :interactions, only: :index
+  resources :triggers, only: :index
+  resources :comments, only: [:new, :index]
+  
+  resources :user, only: [] do
+    resources :comments, only: :index
+  end
+  
+  get 'home/p1', as: :p1_home
+  get 'home/p2', as: :p2_home
+  get 'home/p3', as: :p3_home
+  
+  root 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

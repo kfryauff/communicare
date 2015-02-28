@@ -1,0 +1,31 @@
+<nav role="navigation">
+  <ul>
+    <li><h1><%= link_to "Participants", students_path %></h1></li>
+    <li><%= link_to "Interactions", interactions_path %></li>
+  </ul>
+  
+  <%= form_for :student, method: :get do |f| %>
+    <%= f.search_field :name %>
+  <% end %>
+</nav>
+
+<section>
+  <h2>Sort by</h2>
+  <ul>
+    <li><%= link_to "First Name", students_path, sort: :given_name %></li>
+    <li><%= link_to "Last Name", students_path, sort: :surname %></li>
+    <li><%= link_to "Date Joined", students_path, sort: :joined_at %></li>
+    <li><%= link_to "Age", students_path, sort: :age %></li>
+  </ul>
+</section>
+
+<ul>
+  <%= students.each do |student| %>
+  <li>
+    <%= image_tag student.image, size: "25x25" %>
+    <%= student.full_name %>
+    Age <%= student.age %>
+    Program participant since <%= student.joined_at %>
+  </li>
+  <% end %>
+</ul>
