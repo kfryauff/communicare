@@ -3,8 +3,8 @@ class CreateTriggers < ActiveRecord::Migration
     create_table :triggers do |t|
       t.references :user, index: true
       t.references :student, index: true
-      t.integer :topic
-      t.text :details
+      t.integer :topic, default: 0
+      t.text :detail
 
       t.timestamps
     end

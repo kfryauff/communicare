@@ -5,7 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :surname
       t.string :image
       t.integer :age
-      t.datetime :joined_at
+      t.date :joined_at
 
       t.timestamps
     end

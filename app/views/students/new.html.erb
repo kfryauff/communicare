@@ -1,0 +1,25 @@
+<%= render "shared/main_nav", back_path: students_path, title: "New Participant" %>
+
+<%= form_for student do |f| %>
+  <div class="form-group">
+    <%= f.label :given_name %>
+    <%= f.text_field :given_name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :surname %>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class="form-group">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+  <div class="form-group">
+    <%= f.label :joined_at %>
+    <%= f.date_field :joined_at %>
+  </div>
+  <%= f.submit %>
+<% end %>

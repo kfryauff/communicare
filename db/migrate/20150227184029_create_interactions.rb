@@ -4,8 +4,8 @@ class CreateInteractions < ActiveRecord::Migration
       t.references :user, index: true
       t.references :student, index: true
       t.integer :duration
-      t.integer :topic
-      t.integer :result
+      t.integer :topic, default: 0
+      t.integer :result, default: 0
       t.datetime :occurred_at
 
       t.timestamps

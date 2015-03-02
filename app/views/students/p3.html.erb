@@ -1,0 +1,52 @@
+<%= render "shared/main_nav", back_path: students_path, title: "Participant Profile" %>
+
+<section>
+  <%= image_tag student.image, size: "100x100" %>
+  <h2><%= student.full_name %></h2>
+  <p>Age <%= student.age %></p>
+  <p>Program participant since <%= student.joined_at %></p>
+  <ul role="tablist" class="nav nav-tabs">
+    <li role="presentation">
+      <a href="#private" role="tab" aria-controls="private" data-toggle="tab">Private</a>
+    </li>
+    <li role="presentation" class="active">
+      <a href="#public" role="tab" aria-controls="public" data-toggle="tab">Public</a>
+    </li>
+  </ul>
+  <%= form_for :comment, method: :get do |f| %>
+    <div class="form-group">
+      <%= f.label :text, "Search for Note", class: "sr-only" %>
+      <div class="input-group">
+        <%= f.search_field :text, placeholder: "Search for Note...", class: "form-control" %>
+        <span class="input-group-addon" aria-hidden="true">
+          <span class="glyphicon glyphicon-search"></span>
+        </span>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to "Enter New Note", new_comment_path %>
+  <ul class="tab-content">
+    <li role="tabpanel" class="tab-pane" id="private">
+      <ul>
+        <% student.unresolved_private_comments.each do |comment| %>
+        <li>
+          <p><%= comment.created_at %></p>
+          <p><%= comment.text %></p>
+          <p><%= button_to "mark resolved", status_comment_path(comment), method: :put %></p>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    <li role="tabpanel" class="tab-pane" id="public">
+      <ul>
+        <% student.unresolved_public_comments.each do |comment| %>
+        <li>
+          <p><%= comment.created_at %></p>
+          <p><%= comment.text %></p>
+          <p><%= button_to "mark resolved", status_comment_path(comment), method: :put %></p>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</section>

@@ -1,17 +1,26 @@
 Rails.application.routes.draw do
-  
   devise_for :users
-  resources :students, only: :index do
-    get :search
+  
+  resources :students, only: [:index, :new, :create, :show] do
+    resources :triggers, only: [] do
+      get :edit, on: :collection
+    end
   end
   
-  resources :interactions, only: :index
+  resources :interactions, only: [:index, :new]
   resources :triggers, only: :index
-  resources :comments, only: [:new, :index]
+  resources :notes, only: :edit
+  resources :comments, only: [:new, :index] do
+    put :status, on: :member
+  end
   
   resources :user, only: [] do
     resources :comments, only: :index
   end
+  
+  get 'students/p1', as: :p1_student
+  get 'students/p2', as: :p2_student
+  get 'students/p3', as: :p3_student
   
   get 'home/p1', as: :p1_home
   get 'home/p2', as: :p2_home
