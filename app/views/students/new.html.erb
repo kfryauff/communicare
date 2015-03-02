@@ -2,23 +2,23 @@
 
 <%= form_for student do |f| %>
   <div class="form-group">
-    <%= f.label :given_name %>
+    <%= f.label :given_name, class: "control-label" %>
     <%= f.text_field :given_name %>
   </div>
   <div class="form-group">
-    <%= f.label :surname %>
+    <%= f.label :surname, class: "control-label" %>
     <%= f.text_field :surname %>
   </div>
   <div class="form-group">
-    <%= f.label :image %>
+    <%= f.label :image, class: "control-label" %>
     <%= f.file_field :image %>
   </div>
   <div class="form-group">
-    <%= f.label :age %>
+    <%= f.label :age, class: "control-label" %>
     <%= f.number_field :age %>
   </div>
   <div class="form-group">
-    <%= f.label :joined_at %>
+    <%= f.label :joined_at, class: "control-label" %>
     <%= f.date_field :joined_at %>
   </div>
   <%= f.submit %>

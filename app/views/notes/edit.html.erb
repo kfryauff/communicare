@@ -1,0 +1,8 @@
+<%= render "shared/main_nav", back_path: student_path(note.student), title: "Edit " + t("activerecord.attributes.note.categories.#{note.category}") %>
+<% form_for note do |f| %>
+  <div class="form-group">
+    <%= f.label :text, class: "sr-only" %>
+    <%= f.text_area :text %>
+  </div>
+  <%= f.submit %>
+<% end %>

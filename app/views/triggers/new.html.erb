@@ -1,0 +1,12 @@
+<%= render "shared/main_nav", back_path: edit_student_triggers_path(student), title: "New Trigger" %>
+<% form_for trigger do |f| %>
+  <div class="form-group">
+    <%= f.label :topic, class: "control-label" %>
+    <%= f.select :topic, Trigger.topics %>
+  </div>
+  <div class="form-group">
+    <%= f.label :detail, class: "control-label" %>
+    <%= f.text_area :detail %>
+  </div>
+  <%= f.submit %>
+<% end %>

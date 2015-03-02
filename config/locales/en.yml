@@ -20,7 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      note:
+        categories:
+          overview: Overview Information
+          detail: Other Information & Notes
   helpers:
     submit:
       student:
         create: Add a Participant
+      trigger:
+        create: Add Trigger
+      note:
+        update: Done

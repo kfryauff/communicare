@@ -11,17 +11,7 @@
     <span class="sr-only">Add participant</span>
   <% end %>
   
-  <%= form_for :student, method: :get do |f| %>
-    <div class="form-group">
-      <%= f.label :name, "Search for Participant", class: "sr-only" %>
-      <div class="input-group">
-        <%= f.search_field :name, placeholder: "Search for Participant...", class: "form-control" %>
-        <span class="input-group-addon" aria-hidden="true">
-          <span class="glyphicon glyphicon-search"></span>
-        </span>
-      </div>
-    </div>
-  <% end %>
+  <%= render "shared/search", model: :student, search_topic: "Participant", attr: :name %>
 </nav>
 
 <section>

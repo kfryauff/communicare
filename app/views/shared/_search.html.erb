@@ -1,0 +1,11 @@
+<%= form_tag do %>
+  <div class="form-group">
+    <%= label_tag "#{model}_#{attr}", "Search for #{search_topic}", class: "sr-only" %>
+    <div class="input-group">
+      <%= search_field_tag "#{model}_#{attr}", placeholder: "Search for #{search_topic}...", class: "form-control" %>
+      <span class="input-group-addon" aria-hidden="true">
+        <span class="glyphicon glyphicon-search"></span>
+      </span>
+    </div>
+  </div>
+<% end %>

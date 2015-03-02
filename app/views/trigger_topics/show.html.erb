@@ -1,0 +1,6 @@
+<%= render "shared/main_nav", back_path: triggers_path, title: params[:topic].humanize %>
+<ul>
+  <% students.each do |student| %>
+  <li><%= image_tag student.image, size: "50x50" %></li>
+  <% end %>
+</ul>
