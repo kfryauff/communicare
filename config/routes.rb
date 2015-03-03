@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :students, only: [:index, :new, :create, :show] do
-    resources :triggers, only: [:new, :create] do
-      get :edit, on: :collection
-    end
+    resources :notes, only: [:new, :create]
+    get :new_note, on: :collection
   end
   
-  resources :triggers, only: [:index, :update]
-  resources :trigger_topics, only: :show
-  resources :notes, only: [:edit, :update]
+  resources :notes, only: :index do
+    get :recent, on: :collection
+    put :status, on: :member
+  end
   
   root 'home#index'
 

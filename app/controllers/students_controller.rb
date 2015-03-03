@@ -20,6 +20,11 @@ class StudentsController < ApplicationController
     self.student = Student.find(params[:id])
   end
   
+  def new_note
+    sort_by = params[:sort] || :given_name
+    self.students = Student.order(sort_by)
+  end
+  
   private
   helper_attr :students, :student
   

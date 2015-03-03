@@ -23,14 +23,10 @@ en:
   activerecord:
     attributes:
       note:
-        categories:
-          overview: Overview Information
-          detail: Other Information & Notes
+        text: Note Text
   helpers:
     submit:
       student:
         create: Add a Participant
-      trigger:
-        create: Add Trigger
       note:
-        update: Done
+        create: Save Note

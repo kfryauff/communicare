@@ -5,23 +5,29 @@
   <h2><%= student.full_name %></h2>
   <p>Age <%= student.age %></p>
   <p>Program participant since <%= student.joined_at %></p>
-  <section>
-    <h3>Triggers</h3>
-    <ul>
-      <% student.triggers.each do |trigger| %>
-      <li><%= trigger.detail %></li>
-      <% end %>
-    </ul>
-    <%= link_to "Edit", edit_student_triggers_path(student) %>
-  </section>
-  <section>
-    <h3>Overview</h3>
-    <p><%= student.overview_note.text %></p>
-    <%= link_to "Edit", edit_note_path(student.overview_note) %>
-  </section>
-  <section>
-    <h3>Other Information &amp; Notes</h3>
-    <p><%= student.detail_note.text %></p>
-    <%= link_to "Edit", edit_note_path(student.detail_note) %>
-  </section>
+  <%= render "notes/header", path_for_new_note: new_student_note_path(student) %>
+  <ul class="tab-content">
+    <li role="tabpanel" class="tab-pane" id="private">
+      <ul>
+        <% student.unresolved_private_notes.each do |note| %>
+        <li>
+          <p><%= note.created_at %></p>
+          <p><%= note.text %></p>
+          <p><%= button_to "mark resolved", status_note_path(note) %></p>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    <li role="tabpanel" class="tab-pane active" id="public">
+      <ul>
+        <% student.unresolved_public_notes.each do |note| %>
+        <li>
+          <p><%= note.created_at %></p>
+          <p><%= note.text %></p>
+          <p><%= button_to "mark resolved", status_note_path(note) %></p>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
 </section>

@@ -1,16 +1,22 @@
 class Student < ActiveRecord::Base
-  has_many :triggers
   has_many :notes
   
   def full_name
     "#{given_name} #{surname}"
   end
   
-  def overview_note
-    notes.find_or_create_by!(category: Note.categories[:overview])
+  def unresolved_private_notes
+    unresolved_notes(:private)
   end
   
-  def detail_note
-    notes.find_or_create_by!(category: Note.categories[:detail])
+  def unresolved_public_notes
+    unresolved_notes(:public)
+  end
+  
+  private
+  def unresolved_notes category
+    notes
+      .where(status: Note.statuses[:unresolved], category: Note.categories[category])
+      .order(desc: :created_at)
   end
 end
