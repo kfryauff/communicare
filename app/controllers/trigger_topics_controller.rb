@@ -1,6 +1,7 @@
 class TriggerTopicsController < ApplicationController
   def show
-    self.students = Student.joins(:triggers).where(triggers: { topic: params[:topic] })
+    topic_val = Trigger.topics[params[:id]]
+    self.students = Student.joins(:triggers).where(triggers: { topic: topic_val })
   end
   
   private

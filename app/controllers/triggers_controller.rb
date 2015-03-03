@@ -23,7 +23,7 @@ class TriggersController < ApplicationController
     trigger = Trigger.find(params[:id])
     trigger.update!(trigger_params)
     
-    redirect_to edit_student_triggers_path(trigger.student)
+    redirect_to edit_student_triggers_path(trigger.student), notice: "Trigger updated"
   end
   
   private

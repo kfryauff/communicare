@@ -25,10 +25,10 @@
 </section>
 
 <ul>
-  <%= students.each do |student| %>
+  <% students.each do |student| %>
   <li>
     <%= link_to student do %>
-      <%= image_tag student.image, size: "25x25" %>
+      <%= image_tag student.image, height: 50 %>
     <% end %>
     <p><strong><%= link_to student.full_name, student %></strong></p>
     <p>Age <%= student.age %></p>

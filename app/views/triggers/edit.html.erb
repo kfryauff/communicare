@@ -2,10 +2,10 @@
 <ul>
   <% student.triggers.each do |trigger| %>
   <li>
-    <% form_for trigger do |f| %>
+    <%= form_for trigger do |f| %>
       <div class="form-group">
         <%= f.label :topic, class: "control-label" %>
-        <%= f.select :topic, Trigger.topics %>
+        <%= f.select :topic, Trigger.topic_options %>
       </div>
       <div class="form-group">
         <%= f.label :detail, class: "control-label" %>
@@ -16,4 +16,4 @@
   </li>
   <% end %>
 </ul>
-<% link_to "Add Trigger", new_trigger_path %>
+<%= link_to "Add Trigger", new_student_trigger_path(student) %>

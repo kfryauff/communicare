@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= label_tag "#{model}_#{attr}", "Search for #{search_topic}", class: "sr-only" %>
     <div class="input-group">
-      <%= search_field_tag "#{model}_#{attr}", placeholder: "Search for #{search_topic}...", class: "form-control" %>
+      <%= search_field_tag "#{model}_#{attr}", nil, placeholder: "Search for #{search_topic}...", class: "form-control" %>
       <span class="input-group-addon" aria-hidden="true">
         <span class="glyphicon glyphicon-search"></span>
       </span>

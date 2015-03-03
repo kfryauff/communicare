@@ -11,7 +11,7 @@
   <tbody>
     <% triggers.each do |topic, percent_students| %>
     <tr>
-      <td><%= link_to topic, trigger_topic_path(id: topic) %></td>
+      <td><%= link_to topic.humanize, trigger_topic_path(id: topic) %></td>
       <td><%= percent_students %></td>
     </tr>
     <% end %>
