@@ -1,33 +1,18 @@
 <%= render "shared/main_nav", back_path: students_path, title: "Participant Profile" %>
 
-<section>
-  <%= image_tag student.image, height: 100 %>
-  <h2><%= student.full_name %></h2>
-  <p>Age <%= student.age %></p>
-  <p>Program participant since <%= student.joined_at %></p>
+<main class="container" role="main">
+  <%= render student %>
   <%= render "notes/header", path_for_new_note: new_student_note_path(student) %>
-  <ul class="tab-content">
+  <ul id="note-category-tabcontent" class="tab-content">
     <li role="tabpanel" class="tab-pane" id="private">
-      <ul>
-        <% student.private_notes(user: current_user).each do |note| %>
-        <li>
-          <p><%= note.created_at %></p>
-          <p><%= note.text %></p>
-          <p><%= button_to "mark resolved", status_note_path(note), method: :put %></p>
-        </li>
-        <% end %>
+      <ul class="list-unstyled">
+        <%= render partial: "note", collection: student.private_notes(user: current_user) %>
       </ul>
     </li>
     <li role="tabpanel" class="tab-pane active" id="public">
-      <ul>
-        <% student.public_notes.each do |note| %>
-        <li>
-          <p><%= note.created_at %></p>
-          <p><%= note.text %></p>
-          <p><%= button_to "mark resolved", status_note_path(note), method: :put %></p>
-        </li>
-        <% end %>
+      <ul class="list-unstyled">
+        <%= render partial: "note", collection: student.public_notes %>
       </ul>
     </li>
   </ul>
-</section>
+</main>

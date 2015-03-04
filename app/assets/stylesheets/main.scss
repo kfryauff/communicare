@@ -1,0 +1,83 @@
+body {
+    background-color: #4B74A3;
+    font-size: 16px;
+    color: #000011;
+}
+
+.btn {
+    background: none;
+    color: #000011;
+    border: 2px solid #898C93;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+.btn-wide {
+    width: 100%;
+}
+
+#main-nav {
+    background-color: #86A3C5;
+    padding: 5px 0;
+    margin: 10px 0;
+    > h1 {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 20px;
+        text-align: center;
+    }
+    a {
+        color: #107EF8;
+    }
+}
+
+.input-group {
+    border: 3px solid #333;
+    > input,
+    > .input-group-addon {
+        background-color: #AEC1D7;
+        border: 0;
+        border-radius: 0;
+    }
+}
+
+textarea.form-control {
+    background-color: #898C93;
+    border: 0;
+    border-radius: 0;
+    color: #000011;
+    &::-webkit-input-placeholder {
+       color: #000011;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+       color: #000011;
+    }
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: #000011;
+    }
+    &:-ms-input-placeholder {  
+       color: #000011;
+    }
+}
+
+#logout-link .btn-link,
+.btn-link,
+.devise-link {
+    color: #000011;
+    text-decoration: underline;
+    &:hover {
+        color: #555;
+    }
+}
+
+.gray-container {
+    background-color: #898C93;
+    padding: 1px 5px;
+    > p {
+        margin: 0;
+    }
+}
+
+.form-group {
+    margin-top: 5px;
+}

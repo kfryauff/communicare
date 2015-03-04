@@ -1,0 +1,44 @@
+#sort-container {
+    font-family: serif;
+    > h2 {
+        font-size: 18px;
+        margin: 0;
+    }
+    > h2,
+    a {
+        color: #fff;
+    }
+}
+
+.student {
+    padding: 7px 10px;
+    margin-bottom: 5px;
+    > .media-left > a {
+        width: 200px;
+        display: inline-block;
+    }
+    a,
+    p {
+        color: #000011;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.student-blue {
+    background-color: #AEC1D7;
+}
+
+.student-gray {
+    background-color: #898C93;
+}
+
+.new_student {
+    .control-label {
+        color: #fff;
+    }
+    .form-control {
+        border-radius: 0;
+    }
+}

@@ -1,8 +1,12 @@
 <nav role="navigation">
-  <%= link_to back_path do %>
-    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-    Back
-  <% end %>
-  <h1><%= title %></h1>
-  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+  <div class="row" id="main-nav">
+    <%= link_to back_path, class: "col-xs-2" do %>
+      <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+      Back
+    <% end %>
+    <h1 class="col-xs-8"><%= title %></h1>
+  </div>
+  <div class="container">
+    <%= logout_link %>
+  </div>
 </nav>

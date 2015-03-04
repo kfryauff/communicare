@@ -1,34 +1,17 @@
 <%= render "shared/main_nav", back_path: root_path, title: title %>
-<%= render "header", path_for_new_note: new_note_students_path %>
-<ul class="tab-content">
-  <li role="tabpanel" class="tab-pane" id="private">
-    <ul>
-      <% private_notes.each do |note| %>
-      <li>
-        <%= image_tag note.student.image, height: 50 %>
-        <p><strong><%= note.student.full_name %></strong></p>
-        <p>Age <%= note.student.age %></p>
-        <p>Program participant since <%= note.student.joined_at %></p>
-        <p><%= note.created_at %></p>
-        <p><%= note.text %></p>
-        <p><%= button_to "mark resolved", status_note_path(note), method: :put %></p>
-      </li>
-      <% end %>
-    </ul>
-  </li>
-  <li role="tabpanel" class="tab-pane active" id="public">
-    <ul>
-      <% public_notes.each do |note| %>
-      <li>
-        <%= image_tag note.student.image, height: 50 %>
-        <p><strong><%= note.student.full_name %></strong></p>
-        <p>Age <%= note.student.age %></p>
-        <p>Program participant since <%= note.student.joined_at %></p>
-        <p><%= note.created_at %></p>
-        <p><%= note.text %></p>
-        <p><%= button_to "mark resolved", status_note_path(note), method: :put %></p>
-      </li>
-      <% end %>
-    </ul>
-  </li>
-</ul>
+
+<main class="container" role="main">
+  <%= render "header", path_for_new_note: new_note_students_path %>
+  <ul id="note-category-tabcontent" class="tab-content">
+    <li role="tabpanel" class="tab-pane" id="private">
+      <ul class="list-unstyled">
+        <%= render private_notes %>
+      </ul>
+    </li>
+    <li role="tabpanel" class="tab-pane active" id="public">
+      <ul class="list-unstyled">
+        <%= render public_notes %>
+      </ul>
+    </li>
+  </ul>
+</main>

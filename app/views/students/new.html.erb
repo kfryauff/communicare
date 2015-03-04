@@ -1,25 +1,37 @@
 <%= render "shared/main_nav", back_path: students_path, title: "New Participant" %>
 
-<%= form_for student do |f| %>
-  <div class="form-group">
-    <%= f.label :given_name, class: "control-label" %>
-    <%= f.text_field :given_name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :surname, class: "control-label" %>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image, class: "control-label" %>
-    <%= f.file_field :image %>
-  </div>
-  <div class="form-group">
-    <%= f.label :age, class: "control-label" %>
-    <%= f.number_field :age %>
-  </div>
-  <div class="form-group">
-    <%= f.label :joined_at, class: "control-label" %>
-    <%= f.date_field :joined_at %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<main class="container" role="main">
+  <%= form_for student, html: { class: "new_student form-horizontal" } do |f| %>
+    <div class="form-group">
+      <%= f.label :given_name, class: "control-label col-xs-2" %>
+      <div class="col-xs-10">
+        <%= f.text_field :given_name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :surname, class: "control-label col-xs-2" %>
+      <div class="col-xs-10">
+        <%= f.text_field :surname, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, class: "control-label col-xs-2" %>
+      <div class="col-xs-10">
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :age, class: "control-label col-xs-2" %>
+      <div class="col-xs-10">
+        <%= f.number_field :age, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :joined_at, class: "control-label col-xs-2" %>
+      <div class="col-xs-10">
+        <%= f.date_field :joined_at, class: "form-control" %>
+      </div>
+    </div>
+    <%= f.submit class: "btn btn-wide" %>
+  <% end %>
+</main>

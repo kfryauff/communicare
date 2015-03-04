@@ -1,26 +1,23 @@
 <%= render "shared/main_nav", back_path: student_path(student), title: "New Note" %>
 
-<section>
-  <%= image_tag student.image, height: 100 %>
-  <h2><%= student.full_name %></h2>
-  <p>Age <%= student.age %></p>
-  <p>Program participant since <%= student.joined_at %></p>
+<main class="container" role="main">
+  <%= render student %>
   <%= form_for [student, note] do |f| %>
-    <fieldset>
+    <fieldset id="note-category-fieldset">
       <legend class="sr-only">Note Type</legend>
       <%= f.radio_button :category, :private_ %>
-      <%= f.label :category_private_, "Private" %>
+      <%= f.label :category_private_, "Private", class: "pull-left" %>
       <%= f.radio_button :category, :public_ %>
-      <%= f.label :category_public_, "Public" %>
+      <%= f.label :category_public_, "Public", class: "pull-left" %>
     </fieldset>
-    <div>
-      <p><% DateTime.now %></p>
+    <div class="gray-container">
+      <p><%= DateTime.now.to_formatted_s(:long_ordinal) %></p>
       <p>Note by <%= current_user.name %></p>
     </div>
     <div class="form-group">
       <%= f.label :text, class: "sr-only" %>
-      <%= f.text_area :text, placeholder: "Enter your new note here..." %>
+      <%= f.text_area :text, placeholder: "Enter your new note here...", class: "form-control", rows: 10 %>
     </div>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-wide" %>
   <% end %>
-</section>
+</main>

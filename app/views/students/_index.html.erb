@@ -1,41 +1,53 @@
 <nav role="navigation">
-  <%= link_to root_path do %>
-    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-    Back
-  <% end %>
-  
-  <h1><%= title %></h1>
-  
-  <% if add_student %>
-    <%= link_to new_student_path do %>
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      <span class="sr-only">Add participant</span>
+  <div id="main-nav" class="row">
+    <%= link_to root_path, class: "col-xs-2" do %>
+      <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+      Back
     <% end %>
-  <% end %>
-  
-  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
-  <%= render "shared/search", model: :student, search_topic: "Participant", attr: :name %>
+    <h1 class="col-xs-8"><%= title %></h1>
+    <div class="col-xs-2" %>
+      <% if add_student %>
+        <%= link_to new_student_path, class: "pull-right" do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <span class="sr-only">Add participant</span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <%= render "shared/search", model: :student, search_topic: "Participant", attr: :name %>
+    <%= logout_link %>
+  </div>
 </nav>
 
-<section>
-  <h2>Sort by</h2>
-  <ul>
-    <li><%= link_to "First Name", request.path_info, sort: :given_name %></li>
-    <li><%= link_to "Last Name", request.path_info, sort: :surname %></li>
-    <li><%= link_to "Date Joined", request.path_info, sort: :joined_at %></li>
-    <li><%= link_to "Age", request.path_info, sort: :age %></li>
-  </ul>
-</section>
-
-<ul>
-  <% students.each do |student| %>
-  <li>
-    <%= link_to send(path_for_choosing_student, student) do %>
-      <%= image_tag student.image, height: 50 %>
+<main class="container" role="main">
+  <section class="row" id="sort-container">
+    <h2 class="col-xs-1">Sort by:</h2>
+    <ul class="list-inline col-xs-11">
+      <% sort_categories.each do |text, attr| %>
+      <li><%= link_to text, url_with_query(request.path_info, "sort=#{attr}") %></li>
+      <% end %>
+    </ul>
+  </section>
+  
+  <ul class="list-unstyled">
+    <% students.each do |student| %>
+    <li>
+      <section class="media student student-blue">
+        <div class="media-left">
+          <%= link_to send(path_for_choosing_student, student) do %>
+            <%= image_tag student.image, height: 100, class: "media-object" %>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">
+            <%= link_to student.full_name, send(path_for_choosing_student, student) %>
+          </h2>
+          <p>Age <%= student.age %></p>
+          <p>Program participant since <%= student.joined_at.strftime('%B %Y') %></p>
+        </div>
+      </section>
+    </li>
     <% end %>
-    <p><strong><%= link_to student.full_name, send(path_for_choosing_student, student) %></strong></p>
-    <p>Age <%= student.age %></p>
-    <p>Program participant since <%= student.joined_at %></p>
-  </li>
-  <% end %>
-</ul>
+  </ul>
+</main>

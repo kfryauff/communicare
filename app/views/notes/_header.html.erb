@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs" id="note-category-tablist" role="tablist">
   <li role="presentation">
     <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
   </li>
@@ -7,4 +7,4 @@
   </li>
 </ul>
 <%= render "shared/search", model: :note, search_topic: "Note", attr: :text %>
-<%= link_to "Enter New Note", path_for_new_note %>
+<%= link_to "Enter New Note", path_for_new_note, class: "btn btn-wide" %>

@@ -1,0 +1,5 @@
+<li class="note">
+  <p><%= note.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
+  <p><%= note.text %></p>
+  <p><%= button_to "mark resolved", status_note_path(note), method: :put, form_class: "clearfix", class: "btn-link pull-right" %></p>
+</li>
