@@ -4,4 +4,5 @@
     Back
   <% end %>
   <h1><%= title %></h1>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 </nav>

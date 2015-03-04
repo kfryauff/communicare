@@ -1,12 +1,15 @@
 class NotesController < ApplicationController
   def new
     self.student = Student.find(params[:student_id])
-    self.note = student.notes.build
+    self.note = student.notes.build(category: Note.categories[:public_])
   end
   
   def create
     student = Student.find(params[:student_id])
-    student.notes.create!(note_params)
+    student.notes.create!(note_params) do |n|
+      n.user = current_user
+      n.status = :unresolved
+    end
     
     redirect_to student
   end
@@ -32,6 +35,6 @@ class NotesController < ApplicationController
   helper_attr :note, :private_notes, :public_notes, :student
   
   def note_params
-    params.require(:note).permit(:category, :user_id, :status, :text)
+    params.require(:note).permit(:category, :text)
   end
 end

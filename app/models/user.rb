@@ -10,15 +10,17 @@ class User < ActiveRecord::Base
   end
   
   def private_notes
-    notes_by_category(:private)
+    notes_by_category(:private_)
   end
   
   def public_notes
-    notes_by_category(:public)
+    notes_by_category(:public_)
   end
   
   private
   def notes_by_category category
-    notes.where(category: Note.categories[category]).order(desc: :created_at)
+    notes
+      .where(category: Note.categories[category], status: Note.statuses[:unresolved])
+      .order(created_at: :desc)
   end
 end

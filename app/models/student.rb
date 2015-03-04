@@ -5,18 +5,19 @@ class Student < ActiveRecord::Base
     "#{given_name} #{surname}"
   end
   
-  def unresolved_private_notes
-    unresolved_notes(:private)
+  def private_notes conditions = {}
+    unresolved_notes(:private_, conditions)
   end
   
-  def unresolved_public_notes
-    unresolved_notes(:public)
+  def public_notes
+    unresolved_notes(:public_)
   end
   
   private
-  def unresolved_notes category
+  def unresolved_notes category, conditions = {}
     notes
       .where(status: Note.statuses[:unresolved], category: Note.categories[category])
-      .order(desc: :created_at)
+      .where(conditions)
+      .order(created_at: :desc)
   end
 end

@@ -5,19 +5,17 @@
   <h2><%= student.full_name %></h2>
   <p>Age <%= student.age %></p>
   <p>Program participant since <%= student.joined_at %></p>
-  <%= form_for note do |f| %>
+  <%= form_for [student, note] do |f| %>
     <fieldset>
       <legend class="sr-only">Note Type</legend>
-      <%= f.radio_button :category, :private %>
-      <%= f.label :category_private, "Private" %>
-      <%= f.radio_button :category, :public %>
-      <%= f.label :category_public, "Public" %>
+      <%= f.radio_button :category, :private_ %>
+      <%= f.label :category_private_, "Private" %>
+      <%= f.radio_button :category, :public_ %>
+      <%= f.label :category_public_, "Public" %>
     </fieldset>
     <div>
       <p><% DateTime.now %></p>
       <p>Note by <%= current_user.name %></p>
-      <%= f.hidden_field :user_id, current_user.id %>
-      <%= f.hidden_field :status, :unresolved %>
     </div>
     <div class="form-group">
       <%= f.label :text, class: "sr-only" %>

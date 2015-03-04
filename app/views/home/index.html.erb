@@ -1,10 +1,11 @@
-<%= image_tag "Bgcalogo_small.png", alt: "Boys and Girls Club", size: "128x71" %>
+<%= image_tag "Bgcalogo_small.png", alt: "Boys and Girls Club", size: "449x250" %>
 <h1>
   Facilitating positive conversations and relationships with kids
   <small>Better not means better help</small>
 </h1>
 
 <nav role="navigation">
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
   <ul>
     <li><%= link_to "View Participants", students_path %></li>
     <li><%= link_to "Create New Note", new_note_students_path %></li>

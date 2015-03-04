@@ -13,6 +13,7 @@
     <% end %>
   <% end %>
   
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
   <%= render "shared/search", model: :student, search_topic: "Participant", attr: :name %>
 </nav>
 
