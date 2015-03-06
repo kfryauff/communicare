@@ -1,5 +1,8 @@
+// Variables
+$bg-colour: #4B74A3;
+
 body {
-    background-color: #4B74A3;
+    background-color: $bg-colour;
     font-size: 16px;
     color: #000011;
 }
@@ -8,7 +11,8 @@ body {
     background: none;
     color: #000011;
     border: 2px solid #898C93;
-    border-radius: 0;
+    border-radius: 10px;
+    padding: 5px 10px;
     font-weight: bold;
 }
 

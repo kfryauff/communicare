@@ -1,5 +1,22 @@
 == README
 
+** Prototype Requirements **
+
+<< Part 4 >>
+	Flesh out your prototype. Again, it's a prototype and not a demo: it doesn't need to be complete. If you ever start talking about options or preferences or user logins, stop — you're not focusing on the right parts of the prototype. You can probably even fake most of the data in your application. We don't expect a live database. However, the prototype should be sufficiently mature now so that you can get user feedback on the main interaction flow and needs.
+
+<< Part 3 >>
+
+	We will now focus and begin creating a prototype in code. Recall our guide to creating a prototype: focus on the most important unanswered question about your design. What do you need to create in order to answer that question?
+
+	Your final goal for this week is to create a skeleton functional prototype. A skeleton prototype is one that comprises the central interaction of your design in code, and nothing more. Don't make it pretty. Don't try to build out the whole idea. Keep it lightweight. Feel free to Wizard of Oz components that you will later implement. Fake any data or user accounts. Show us the general interaction scaffold that you'll be fleshing out in later weeks.
+
+	Consider this a core-then-expand approach to engineering where you start with a rapid minimum viable prototype and then iterate. Contrast this to a modular execution approach where you know the final architecture at the beginning and build it week by week in modular components. The modular approach, while attractive in other classes, is not a good match for design work — there is no point in building robust infrastructure when you are likely to toss it out or evolve the design.
+
+	Remember, there's no way that you can complete an overly ambitious prototype alongside your other goals for this week, even with three of you. Focus on just the most critical element and prototype just that in code. If you've focused your question correctly, your prototype will convey the most important aspect of the experience that you are envisioning.
+
+== README
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

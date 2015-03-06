@@ -1,6 +1,11 @@
-<main class="container" role="main">
-  <h1>Log in</h1>
-  
+<main class="container center" role="main">
+  <br />
+  <%= image_tag "Bgcalogo_small.png", alt: "Boys and Girls Club", size: "300x150", class: "center-block" %>
+  <h3 class="center">
+    Facilitating positive conversations and relationships with kids
+  </h3>
+  <br />
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />

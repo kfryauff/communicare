@@ -22,3 +22,13 @@
 @import "home";
 @import "students";
 @import "notes";
+
+// General CSS
+.center {
+	text-align: center;
+}
+
+input, button {
+	border-radius: 10px;
+	padding: 5px;
+}
