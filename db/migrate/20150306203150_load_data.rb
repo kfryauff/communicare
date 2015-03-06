@@ -1,7 +1,11 @@
 class LoadData < ActiveRecord::Migration
   def up
-  	# initial fake kids
   	down
+  	# initial user
+  	user1 = User.new(:name => "test", :email => "test@user.com", :password => "test")
+  	user1.save(:validate => false)
+
+  	# initial fake kids
   	kid1 = Student.new(:given_name => "Lillybeth", :surname => "Serrano", :image => "uploads/kid1.png", :age => 12, :joined_at => "2012-08-30 12:34:23")
  	kid1.save()
  	kid2 = Student.new(:given_name => "Keagan", :surname => "Royce", :image => "uploads/kid2.png", :age => 11, :joined_at => "2012-09-27 01:14:23")
