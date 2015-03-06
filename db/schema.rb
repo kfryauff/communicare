@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306221957) do
+ActiveRecord::Schema.define(version: 20150306231320) do
 
   create_table "notes", force: true do |t|
     t.integer  "user_id"
@@ -37,9 +37,6 @@ ActiveRecord::Schema.define(version: 20150306221957) do
     t.date     "joined_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "good_mood_count",    default: 0
-    t.integer  "neutral_mood_count", default: 0
-    t.integer  "bad_mood_count",     default: 0
   end
 
   create_table "users", force: true do |t|
