@@ -5,6 +5,7 @@ class CreateNotes < ActiveRecord::Migration
       t.references :student, index: true
       t.text :text
       t.integer :category, default: 0
+      
 
       t.timestamps
     end

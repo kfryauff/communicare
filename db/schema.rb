@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303091710) do
+ActiveRecord::Schema.define(version: 20150306203150) do
 
   create_table "notes", force: true do |t|
     t.integer  "user_id"
