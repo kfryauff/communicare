@@ -2,17 +2,4 @@
 
 <main class="container" role="main">
   <%= render student %>
-  <%= render "notes/header", path_for_new_note: new_student_note_path(student) %>
-  <ul id="note-category-tabcontent" class="tab-content">
-    <li role="tabpanel" class="tab-pane" id="private">
-      <ul class="list-unstyled">
-        <%= render partial: "note", collection: student.private_notes(user: current_user) %>
-      </ul>
-    </li>
-    <li role="tabpanel" class="tab-pane active" id="public">
-      <ul class="list-unstyled">
-        <%= render partial: "note", collection: student.public_notes %>
-      </ul>
-    </li>
-  </ul>
 </main>
