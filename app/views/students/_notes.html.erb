@@ -12,7 +12,9 @@
   </section>
   <section>
     <h2>Notes</h2>
-    <%= render partial: "note_text", collection: notes, as: :note %>
+    <ul class="list-unstyled">
+      <%= render partial: "note_text", collection: notes, as: :note %>
+    </ul>
   </section>
 <% else %>
   <p><%= missing_msg %> for <%= student.given_name %>.</p>

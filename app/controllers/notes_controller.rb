@@ -5,12 +5,18 @@ class NotesController < ApplicationController
   end
   
   def create
-    student = Student.find(params[:student_id])
-    #student.notes.create!(note_params) do |n|
-    #  n.user = current_user
-    #end
+    self.student = Student.find(params[:student_id])
+    self.note = student.notes.build(note_params) do |n|
+      n.user = current_user
+      n.resolution = :unresolved
+      n.privacy_status = params[:private] ? :private_ : :public_
+    end
     
-    redirect_to student
+    if note.save
+      redirect_to student
+    else
+      render :new
+    end
   end
   
   def status
@@ -24,6 +30,6 @@ class NotesController < ApplicationController
   helper_attr :note, :student
   
   def note_params
-    params.require(:note).permit
+    params.require(:note).permit(:category, :importance, :mood, :text)
   end
 end

@@ -1,4 +1,5 @@
 class Note < ActiveRecord::Base
+  enum category: [:one_on_one, :general, :observation]
   enum privacy_status: [:private_, :public_]
   enum resolution: [:unresolved, :resolved]
   enum importance: [:low, :med, :high]
@@ -6,6 +7,9 @@ class Note < ActiveRecord::Base
   
   belongs_to :student
   belongs_to :user
+  
+  validates_presence_of :category, :privacy_status, :resolution, :importance,
+    :mood, :student, :user
   
   def self.good_mood_count
     mood_count(:good)

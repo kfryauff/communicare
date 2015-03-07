@@ -3,6 +3,46 @@
 <main class="container" role="main">
   <%= render student %>
   <%= form_for [student, note] do |f| %>
+    <% if note.errors.any? %>
+      <div class="error-notification">
+        The following <%= pluralize(note.errors.count, "error") %> prevented this note from being saved:
+        <ul>
+          <% note.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <fieldset>
+      <legend>What type of note is this?</legend>
+      <% Note.categories.each do |category, _| %>
+      <%= f.radio_button :category, category, required: true %>
+      <%= f.label "category_#{category}", category.humanize %>
+      <% end %>
+    </fieldset>
+    <div class="form-group">
+      <%= check_box_tag :private, "1", note.private_? %>
+      <%= label_tag :private %>
+    </div>
+    <fieldset>
+      <legend>How important?</legend>
+      <% Note.importances.each do |importance, _| %>
+      <%= f.radio_button :importance, importance, required: true %>
+      <%= f.label "importance_#{importance}", importance.humanize %>
+      <% end %>
+    </fieldset>
+    <fieldset>
+      <legend>How did <%= student.given_name %> end up feeling?</legend>
+      <% Note.moods.each do |mood, _| %>
+      <%= f.radio_button :mood, mood, required: true %>
+      <%= f.label "mood_#{mood}", mood.humanize %>
+    <% end %>
+    </fieldset>
+    <div class="form-group">
+      <%= f.label :text, "Why?" %>
+      <%= f.text_area :text, class: "form-control" %>
+    </div>
     <%= f.submit class: "btn btn-wide" %>
   <% end %>
 </main>
