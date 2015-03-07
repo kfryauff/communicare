@@ -27,10 +27,20 @@
     </div>
     <fieldset>
       <legend>How important?</legend>
-      <% Note.importances.each do |importance, _| %>
-      <%= f.radio_button :importance, importance, required: true %>
-      <%= f.label "importance_#{importance}", importance.humanize %>
-      <% end %>
+      <div class="btn-group" data-toggle="buttons">
+        <%= f.label "importance_low", class: "btn btn-info #{note.low? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :low, required: true %>
+          Low
+        <% end %>
+        <%= f.label "importance_med", class: "btn btn-warning #{note.med? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :med, required: true %>
+          Medium
+        <% end %>
+        <%= f.label "importance_high", class: "btn btn-danger #{note.high? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :high, required: true %>
+          High
+        <% end %>
+      </div>
     </fieldset>
     <fieldset>
       <legend>How did <%= student.given_name %> end up feeling?</legend>
