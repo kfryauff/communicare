@@ -51,17 +51,21 @@ textarea.form-control {
     border-radius: 0;
     color: #000011;
     &::-webkit-input-placeholder {
-       color: #000011;
+       color: #333;
     }
     &:-moz-placeholder { /* Firefox 18- */
-       color: #000011;
+       color: #333;
     }
     &::-moz-placeholder {  /* Firefox 19+ */
-       color: #000011;
+       color: #333;
     }
     &:-ms-input-placeholder {  
-       color: #000011;
+       color: #333;
     }
+}
+
+fieldset {
+    margin-bottom: 15px;
 }
 
 #logout-link .btn-link,

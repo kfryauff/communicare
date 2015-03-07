@@ -49,3 +49,31 @@
     background-color: #898C93;
     padding: 5px 7px 0;
 }
+
+/* lines A, B, and C are voodoo to make the mood images line up with the N/A text.
+ * (Perhaps we should consider just making N/A an equally sized image.)
+ * Ideas were stolen from here: http://stackoverflow.com/a/2744005/830988
+ */
+
+#mood-fieldset > div {
+    height: 90px; /* A */
+    > label {
+        line-height: 90px; /* B */
+    }
+}
+
+.mood-radio:checked + label {
+    border: 3px solid #898C93;
+}
+
+.mood-img {
+    vertical-align: top; /* C */
+    > img {
+        margin: 0 10px;
+    }
+}
+
+#note_mood_na-label {
+    padding: 0 10px;
+    font-size: 50px;
+}
