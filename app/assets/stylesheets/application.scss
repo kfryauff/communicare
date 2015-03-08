@@ -90,3 +90,7 @@ label{
         overflow: hidden!important;
     }
 }
+
+.mood-radio:checked + label {
+  border: 1px solid #898C93;
+}
