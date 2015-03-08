@@ -10,6 +10,7 @@
       <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
     </li>
   </ul>
+  <%= link_to "Create New Note", new_student_note_path(student), class: "btn btn-wide" %>
   <ul class="tab-content" id="note-category-tabcontent">
     <li role="tabpanel" class="tab-pane active" id="public">
       <%= render "notes", notes: student.public_notes, student: student,

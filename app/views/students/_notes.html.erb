@@ -1,20 +1,23 @@
 <% if notes.exists? %>
   <section>
     <h2>Moods</h2>
-    <dl>
-      <dt>Positive</dt>
-      <dd><%= notes.good_mood_count %></dd>
-      <dt>Neutral</dt>
-      <dd><%= notes.neutral_mood_count %></dd>
-      <dt>Negative</dt>
-      <dd><%= notes.bad_mood_count %></dd>
-    </dl>
+    <% if notes.has_emotion_moods? %>
+      <%= mood_percent_image("good", "Happy", notes) %>
+      <%= mood_percent_image("neutral", "Neutral", notes) %>
+      <%= mood_percent_image("bad", "Sad", notes) %>
+    <% else %>
+      <p>No moods recorded</p>
+    <% end %>
   </section>
   <section>
-    <h2>Notes</h2>
-    <ul class="list-unstyled">
-      <%= render partial: "note_text", collection: notes, as: :note %>
-    </ul>
+    <h2>Comments</h2>
+    <% if notes.has_text? %>
+      <ul class="list-unstyled">
+        <%= render partial: "note_text", collection: notes.with_text, as: :note %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
   </section>
 <% else %>
   <p><%= missing_msg %> for <%= student.given_name %>.</p>

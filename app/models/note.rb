@@ -11,21 +11,33 @@ class Note < ActiveRecord::Base
   validates_presence_of :category, :privacy_status, :resolution, :importance,
     :mood, :student, :user
   
-  def self.good_mood_count
-    mood_count(:good)
+  def self.has_emotion_moods?
+    where.not(mood: moods[:na]).exists?
   end
   
-  def self.neutral_mood_count
-    mood_count(:neutral)
+  def self.good_mood_percent
+    emotion_mood_percent(:good)
   end
   
-  def self.bad_mood_count
-    mood_count(:bad)
+  def self.neutral_mood_percent
+    emotion_mood_percent(:neutral)
+  end
+  
+  def self.bad_mood_percent
+    emotion_mood_percent(:bad)
+  end
+  
+  def self.with_text
+    where.not(text: "")
+  end
+  
+  def self.has_text?
+    with_text.exists?
   end
   
   private
   
-  def self.mood_count mood
-    where(mood: moods[mood]).count
+  def self.emotion_mood_percent mood
+    (where(mood: moods[mood]).count * 100.0 / where.not(mood: moods[:na]).count).to_i
   end
 end
