@@ -5,23 +5,4 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :notes
   has_many :students
-
-  def recent_private_notes
-    private_notes.limit(5)
-  end
-  
-  def private_notes
-    notes_by_category(:private_)
-  end
-  
-  def public_notes
-    notes_by_category(:public_)
-  end
-  
-  private
-  def notes_by_category category
-    notes
-      .where(category: Note.categories[category], status: Note.statuses[:unresolved])
-      .order(created_at: :desc)
-  end
 end

@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     get :new_note, on: :collection
   end
   
-  resources :notes, only: :index do
-    get :recent, on: :collection
+  resources :notes, only: [] do
     put :status, on: :member
   end
   

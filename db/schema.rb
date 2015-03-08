@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306203150) do
+ActiveRecord::Schema.define(version: 20150306231320) do
 
   create_table "notes", force: true do |t|
     t.integer  "user_id"
     t.integer  "student_id"
     t.text     "text"
-    t.integer  "category",   default: 0
+    t.integer  "category",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",     default: 0
+    t.integer  "resolution",     default: 0
+    t.integer  "importance",     default: 0
+    t.integer  "mood",           default: 0
+    t.integer  "privacy_status", default: 0
   end
 
   add_index "notes", ["student_id"], name: "index_notes_on_student_id"

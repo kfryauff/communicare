@@ -3,24 +3,67 @@
 <main class="container" role="main">
   <%= render student %>
   <%= form_for [student, note] do |f| %>
-    <fieldset id="note-category-fieldset">
-      <legend class="sr-only">Note Type</legend>
-      <%= f.radio_button :category, :private_ %>
-      <%= f.label :category_private_, "Private", class: "pull-left" %>
-      <%= f.radio_button :category, :public_ %>
-      <%= f.label :category_public_, "Public", class: "pull-left" %>
+    <% if note.errors.any? %>
+      <div class="error-notification">
+        The following <%= pluralize(note.errors.count, "error") %> prevented this note from being saved:
+        <ul>
+          <% note.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <fieldset>
+      <legend>What type of note is this?</legend>
+      <% Note.categories.each do |category, _| %>
+      <%= f.radio_button :category, category, required: true %>
+      <%= f.label "category_#{category}", category.humanize %>
+      <% end %>
     </fieldset>
-    <div class="gray-container">
-      <p><%= DateTime.now.to_formatted_s(:long_ordinal) %></p>
-      <p>Note by <%= current_user.name %></p>
-    </div>
     <div class="form-group">
-      <%= f.label :text, class: "sr-only" %>
-      <%= f.text_area :text, placeholder: "Enter your new note here...", class: "form-control", rows: 10 %>
+      <%= check_box_tag :private, "1", note.private_? %>
+      <%= label_tag :private %>
     </div>
+    <fieldset>
+      <legend>How important?</legend>
+      <div class="btn-group" data-toggle="buttons">
+        <%= f.label :importance_low, class: "btn btn-info #{note.low? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :low, required: true %>
+          Low
+        <% end %>
+        <%= f.label :importance_med, class: "btn btn-warning #{note.med? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :med, required: true %>
+          Medium
+        <% end %>
+        <%= f.label :importance_high, class: "btn btn-danger #{note.high? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :high, required: true %>
+          High
+        <% end %>
+      </div>
+    </fieldset>
+    <fieldset id="mood-fieldset">
+      <legend>How did <%= student.given_name %> end up feeling?</legend>
+      <div>
+        <%= f.radio_button :mood, :good, class: "sr-only mood-radio", required: true %>
+        <%= f.label :mood_good, class: "mood-img" do %>
+          <%= image_tag "mood_good_trans.png", alt: "Happy", size: "75x75" %>
+        <% end %>
+        <%= f.radio_button :mood, :neutral, class: "sr-only mood-radio", required: true %>
+        <%= f.label :mood_neutral, class: "mood-img" do %>
+          <%= image_tag "mood_neutral_trans.png", alt: "Neutral", size: "75x75" %>
+        <% end %>
+        <%= f.radio_button :mood, :bad, class: "sr-only mood-radio", required: true %>
+        <%= f.label :mood_bad, class: "mood-img" do %>
+          <%= image_tag "mood_bad_trans.png", alt: "Sad", size: "75x75" %>
+        <% end %>
+        <%= f.radio_button :mood, :na, class: "sr-only mood-radio", required: true %>
+        <%= f.label :mood_na, "N/A", id: "note_mood_na-label" %>
+      </div>
+    </fieldset>
     <div class="form-group">
-      <%= radio_button_tag(:one_on_one, "true") %>
-      <%= label_tag(:one_on_one_true, "One on One with Kid?") %>
+      <%= f.label :text, "Why?" %>
+      <%= f.text_area :text, class: "form-control", rows: 5, placeholder: "Enter comment..." %>
     </div>
 
     <%= f.submit class: "btn btn-wide" %>

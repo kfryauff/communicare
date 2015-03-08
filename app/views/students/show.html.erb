@@ -2,17 +2,23 @@
 
 <main class="container" role="main">
   <%= render student %>
-  <%= render "notes/header", path_for_new_note: new_student_note_path(student) %>
-  <ul id="note-category-tabcontent" class="tab-content">
-    <li role="tabpanel" class="tab-pane" id="private">
-      <ul class="list-unstyled">
-        <%= render partial: "note", collection: student.private_notes(user: current_user) %>
-      </ul>
+  <ul class="nav nav-tabs" id="note-category-tablist" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
     </li>
+    <li role="presentation">
+      <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
+    </li>
+  </ul>
+  <%= link_to "Create New Note", new_student_note_path(student), class: "btn btn-wide" %>
+  <ul class="tab-content" id="note-category-tabcontent">
     <li role="tabpanel" class="tab-pane active" id="public">
-      <ul class="list-unstyled">
-        <%= render partial: "note", collection: student.public_notes %>
-      </ul>
+      <%= render "notes", notes: student.public_notes, student: student,
+          missing_msg: "No public notes have been made" %>
+    </li>
+    <li role="tabpanel" class="tab-pane" id="private">
+      <%= render "notes", notes: student.private_notes(user: current_user),
+          student: student, missing_msg: "You have not made any private notes" %>
     </li>
   </ul>
 </main>

@@ -1,27 +1,22 @@
 class NotesController < ApplicationController
   def new
     self.student = Student.find(params[:student_id])
-    self.note = student.notes.build(category: Note.categories[:public_])
+    self.note = student.notes.build(mood: Note.moods[:na])
   end
   
   def create
-    student = Student.find(params[:student_id])
-    student.notes.create!(note_params) do |n|
+    self.student = Student.find(params[:student_id])
+    self.note = student.notes.build(note_params) do |n|
       n.user = current_user
-      n.status = :unresolved
+      n.resolution = :unresolved
+      n.privacy_status = params[:private] ? :private_ : :public_
     end
     
-    redirect_to student
-  end
-  
-  def index
-    self.private_notes = current_user.private_notes
-    self.public_notes = current_user.public_notes
-  end
-  
-  def recent
-    self.private_notes = current_user.recent_private_notes
-    self.public_notes = Note.recent_public_notes
+    if note.save
+      redirect_to student
+    else
+      render :new
+    end
   end
   
   def status
@@ -32,9 +27,9 @@ class NotesController < ApplicationController
   end
   
   private
-  helper_attr :note, :private_notes, :public_notes, :student
+  helper_attr :note, :student
   
   def note_params
-    params.require(:note).permit(:category, :text)
+    params.require(:note).permit(:category, :importance, :mood, :text)
   end
 end
