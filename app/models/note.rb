@@ -19,13 +19,14 @@ class Note < ActiveRecord::Base
     emotion_mood_count(:good)
   end
 
-   def self.neutral_mood_count
+  def self.neutral_mood_count
     emotion_mood_count(:neutral)
   end
 
   def self.bad_mood_count
     emotion_mood_count(:bad)
   end
+  
   def self.good_mood_percent
     emotion_mood_percent(:good)
   end

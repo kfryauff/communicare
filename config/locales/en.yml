@@ -24,6 +24,11 @@ en:
     attributes:
       note:
         text: Note Text
+        moods:
+          bad: Negative
+          neutral: Neutral
+          good: Positive
+          na: N/A
   helpers:
     submit:
       student:
