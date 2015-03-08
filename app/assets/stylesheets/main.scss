@@ -22,23 +22,26 @@ body {
 }
 
 .moodsSectionTitle{
-    font-size: 14px;
-    color: rgb(119, 119, 119);
-    margin: 40px 10px 20px 40px;
+  font-size: 14px;
+    color: #777777;
+    margin: 25px 5px 20px 40px;
+    text-align: center;
 }
 
 .moodsDiv{
     clear:both;
-    height: 120px;
+    height: 100px;
+    text-align:center;
 }
 
 .moodsNumeric, .moodsVisualization{
-    margin-left:50px;
+    margin-left:40px;
     margin-top: 15px;
 }
 
 .moodsNumeric, .moodsVisualization, .moodsSectionTitle{
         display: inline-block;
+        float:left;
 
 }
 .moodsVisualization, .moodsSectionTitle{
