@@ -164,11 +164,19 @@ fieldset {
 .btn-link,
 .devise-link,
 .normal-link {
-    color: #000011;
-    text-decoration: underline;
+  /*  color: #000011; */
+    color: #777777;
+   /* text-decoration: underline; */
     &:hover {
-        color: #555;
+    /*    color: #555; */
+        color: #000011;
+        text-decoration: none;
+
     }
+}
+
+#logout-link{
+   margin-left: 10px;
 }
 
 .gray-container {
