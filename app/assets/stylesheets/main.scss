@@ -21,13 +21,33 @@ body {
     width: 100%;
 }
 
-.moodsVisualization{
+.moodsSectionTitle{
+    font-size: 14px;
+    color: rgb(119, 119, 119);
+    margin: 40px 10px 20px 40px;
+}
+
+.moodsDiv{
+    clear:both;
+    height: 120px;
+}
+
+.moodsNumeric, .moodsVisualization{
+    margin-left:50px;
+    margin-top: 15px;
+}
+
+.moodsNumeric, .moodsVisualization, .moodsSectionTitle{
+        display: inline-block;
+
+}
+.moodsVisualization, .moodsSectionTitle{
     float:left;
 }
 .radioButton{
     padding-right: 10px;
 }
-#sortDropdown, .moodsNumeric{
+#sortDropdown{
     float:right;
 }
 #boundingBox, .mainStudentContent{

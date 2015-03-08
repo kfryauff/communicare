@@ -6,20 +6,31 @@
     <div class="moodsDiv">
 
      <!-- <h2>Moods</h2>  -->
-    <div class="sectionTitle">
-    <span class="cardTitle" style="color:black;"> Moods </span>
+        <div class="moodsSectionTitle">
+          <span> Mood Breakdown <br/> by Number of <br/> Interactions </span>
+        </div>
+        <% if notes.has_emotion_moods? %>
+          <div class="moodsVisualization">
+              <%= mood_percent_image("good", "Happy", notes) %>
+              <%= mood_percent_image("neutral", "Neutral", notes) %>
+              <%= mood_percent_image("bad", "Sad", notes) %>
+          </div>
+          <div class="moodsNumeric">
+              Happy: <%= mood_count_data("good", "Happy", notes) %> <br/>
+              Neutral: <%= mood_count_data("neutral", "Neutral", notes) %> <br/>
+              Sad: <%= mood_count_data("bad", "Sad", notes) %> <br/>
+           </div>
+      <% else %>
+        <p>No moods recorded</p>
+      <% end %>
+      <!-- </div> -->
     </div>
-    <% if notes.has_emotion_moods? %>
-      <%= mood_percent_image("good", "Happy", notes) %>
-      <%= mood_percent_image("neutral", "Neutral", notes) %>
-      <%= mood_percent_image("bad", "Sad", notes) %>
-    <% else %>
-      <p>No moods recorded</p>
-    <% end %>
-  </div>
   </section>
+</div>
 
 <hr/>
+<div class="mainStudentContent">
+
   <ul class="nav nav-tabs">
   <li role="presentation" class="active">
       <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
