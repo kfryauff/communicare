@@ -11,6 +11,10 @@ class Note < ActiveRecord::Base
   validates_presence_of :category, :privacy_status, :resolution, :importance,
     :mood, :student, :user
   
+  def self.emotion_moods
+    [:bad, :neutral, :good]
+  end
+  
   def self.has_emotion_moods?
     where.not(mood: moods[:na]).exists?
   end

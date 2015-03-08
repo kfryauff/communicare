@@ -2,58 +2,84 @@
 
 <main class="container" role="main">
   <%= render student %>
-<div class="mainStudentContent">
+  <div class="mainStudentContent">
+  </div>
+  <% if student.notes.exists? %>
+    <div class="mainStudentContent">
+      <hr/>
+      <section>
+        <div class="moodsDiv">
+          <div class="moodsSectionTitle">
+            <span> Mood Breakdown <br/> by Number of <br/> Interactions </span>
+          </div>
+          <% if student.notes.has_emotion_moods? %>
+            <div class="moodsVisualization">
+              <% Note.emotion_moods.each do |mood| %>
+                <%= mood_percent_image(mood, student.notes) %>
+              <% end %>
+            </div>
+            <div class="moodsNumeric">
+              <% Note.emotion_moods.each do |mood| %>
+              <%= t(mood, scope: [:activerecord, :attributes, :note, :moods]) %>:
+              <%= student.notes.send("#{mood}_mood_count") %> <br/>
+              <% end %>
+            </div>
+          <% else %>
+            <p>No moods recorded</p>
+          <% end %>
+        </div>
+      </section>
+    </div>
 
-  <!--   <ul class="nav nav-tabs">
-  <li role="presentation" class="active">
-      <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
-  </li>
-  <li role="presentation">
-      <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
-  </li>
-
-   <li role="presentation" class="dropdown" id="sortDropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Order By: <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      <li> Importance: High to Low </li>
-      <li> Importance: Low to High </li>
-      <li> Date: Recent to Oldest </li>
-      <li> Date: Oldest to Recent </li>
-      <li> Creator: Alphabetical </li>
-
-    </ul> -->
-
-   <!--   <% sort_categories.each do |text, attr| %>
-      <button type="button" class="btn btn-default"><span class="subhead"> <%= link_to text, url_with_query(request.path_info, "sort=#{attr}") %></span></button>
-      <% end %> -->
-
-  <!-- <li role="presentation"><a href="#">Messages</a></li> -->
-</ul>
-</div>
-
- <!--  <ul class="nav nav-tabs" id="note-category-tablist" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
-    </li>
-    <li role="presentation">
-      <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
-    </li>
-  </ul> -->
-      <!--  <button type="button" class="btn btn-default"><span class="subhead"> <%= link_to "Create New Note", new_student_note_path(student) %></span></button> -->
-
-   <!-- <%= link_to "Create New Note", new_student_note_path(student), class: "btn btn-wide subhead" %> -->
-  <ul class="tab-content" id="note-category-tabcontent">
-    
-    <li role="tabpanel" class="tab-pane active" id="public">
-      <%= render "notes", notes: student.public_notes, student: student,
-          missing_msg: "No public notes have been made" %>
-    </li>
-    <li role="tabpanel" class="tab-pane" id="private">
-      <%= render "notes", notes: student.private_notes(user: current_user),
-          student: student, missing_msg: "You have not made any private notes" %>
-    </li>
-<!-- </div>
- --></div>
+    <hr/>
+    <div class="mainStudentContent">
+      <div class="dropdown pull-right" id="sortDropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+          Order By: <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li> Importance: High to Low </li>
+          <li> Importance: Low to High </li>
+          <li> Date: Recent to Oldest </li>
+          <li> Date: Oldest to Recent </li>
+          <li> Creator: Alphabetical </li>
+        </ul>
+      </div>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
+        </li>
+        <li role="presentation">
+            <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="tab-content" id="note-category-tabcontent">
+      <li role="tabpanel" class="tab-pane active" id="public">
+        <section>
+          <% if student.public_notes.has_text? %>
+            <ul class="list-unstyled">
+              <%= render student.public_notes.with_text %>
+            </ul>
+          <% else %>
+            <p>No comments</p>
+          <% end %>
+        </section>
+      </li>
+      <li role="tabpanel" class="tab-pane" id="private">
+        <section>
+          <% if student.private_notes(user: current_user).has_text? %>
+            <ul class="list-unstyled">
+              <%= render student.private_notes(user: current_user).with_text %>
+            </ul>
+          <% else %>
+            <p>No comments</p>
+          <% end %>
+        </section>
+      </li>
+    </ul>
+  <% else %>
+    <p>No notes have been made for <%= student.given_name %>.</p>
+    <p>Would you like to <%= link_to "make the first note", new_student_note_path(student), class: "normal-link" %>?</p>
+  <% end %>
 </main>

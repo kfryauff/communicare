@@ -1,19 +1,11 @@
-<!-- <li class="note bg-<%= importance_color(note.importance) %>">
-  <p><%= note.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
-  <p><%= note.author_name %> wrote:</p>
-  <p><%= note.text %></p>
-  <p><%= button_to "mark resolved", status_note_path(note), method: :put, form_class: "clearfix", class: "btn-link pull-right" %></p>
-</li> -->
-
-
-<li class="well  card bg-<%= importance_color(note.importance) %>">
-	<div class="noteHeader">
-		<span class="noteHeaderItem-left"> <%= note.created_at.to_date.to_formatted_s(:long_ordinal) %> </span>
-		<span class="noteHeaderItem-middle"> Creator: <%= note.author_name %> </span>
-		<span class="noteHeaderItem-middle"> Importance Level: <%= note.importance %> </span>
-		<span class="noteHeaderItem-right"> Mood:  <%= t(note.mood, scope: [:activerecord, :attributes, :note, :moods]) %> </span>
-	</div>
-	<hr/>
+<li class="well card">
+  <div class="noteHeader">
+    <span class="noteHeaderItem-left"> <%= note.created_at.to_date.to_formatted_s(:long_ordinal) %> </span>
+    <span class="noteHeaderItem-middle"> Creator: <%= note.author_name %> </span>
+    <span class="noteHeaderItem-middle"> Importance Level: <%= note.importance %> </span>
+    <span class="noteHeaderItem-right"> Mood:  <%= t(note.mood, scope: [:activerecord, :attributes, :note, :moods]) %> </span>
+  </div>
+  <hr/>
   <p>
   </p>
   <p><%= note.text %></p>
