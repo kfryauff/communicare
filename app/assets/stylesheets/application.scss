@@ -49,6 +49,10 @@ input, button {
 	color: #777;
 }
 
+label{
+    font-weight: 400;
+}
+
 @media (max-width: 1400px) {
     .navbar-header {
         float: none;
