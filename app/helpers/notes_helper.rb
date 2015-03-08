@@ -5,4 +5,10 @@ module NotesHelper
       title: "#{mood_name}: #{mood_percent}%", width: mood_percent,
       height: mood_percent
   end
+
+  # def mood_count_data mood, mood_name, notes
+  # 	mood_count = notes.send("#{mood}_mood_count")
+  # 	concat mood_count
+  # end
+
 end

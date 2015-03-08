@@ -3,11 +3,12 @@
 <div class="mainStudentContent">
   <hr/>
   <section>
+    <div class="moodsDiv">
+
      <!-- <h2>Moods</h2>  -->
     <div class="sectionTitle">
     <span class="cardTitle" style="color:black;"> Moods </span>
     </div>
-
     <% if notes.has_emotion_moods? %>
       <%= mood_percent_image("good", "Happy", notes) %>
       <%= mood_percent_image("neutral", "Neutral", notes) %>
@@ -15,6 +16,7 @@
     <% else %>
       <p>No moods recorded</p>
     <% end %>
+  </div>
   </section>
 
 <hr/>

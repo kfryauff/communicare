@@ -17,7 +17,17 @@ body {
     letter-spacing: 0.005em;
 }
 
-#sortDropdown{
+.textEntry{
+    width: 100%;
+}
+
+.moodsVisualization{
+    float:left;
+}
+.radioButton{
+    padding-right: 10px;
+}
+#sortDropdown, .moodsNumeric{
     float:right;
 }
 #boundingBox, .mainStudentContent{

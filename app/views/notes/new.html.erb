@@ -18,9 +18,10 @@
 
     <fieldset>
       <legend>What type of note is this?</legend>
+
       <% Note.categories.each do |category, _| %>
       <%= f.radio_button :category, category, required: true %>
-      <%= f.label "category_#{category}", category.humanize %>
+      <%= f.label "category_#{category}", category.humanize, class:"radioButton"%>
       <% end %>
     </fieldset>
     <div class="form-group">
@@ -29,7 +30,7 @@
     </div>
     <fieldset>
       <legend>How important?</legend>
-      <div class="btn-group" data-toggle="buttons">
+      <div class="btn-group" data-toggle="buttons"><!-- 
         <%= f.label :importance_low, class: "btn btn-info #{note.low? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :low, required: true %>
           Low
@@ -41,11 +42,23 @@
         <%= f.label :importance_high, class: "btn btn-danger #{note.high? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :high, required: true %>
           High
+        <% end %> <hr/> -->
+        <%= f.label :importance_low, class: "btn btn-default #{note.low? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :low, required: true %>
+          Low
+        <% end %>
+        <%= f.label :importance_med, class: "btn btn-default #{note.med? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :med, required: true %>
+          Medium
+        <% end %>
+        <%= f.label :importance_high, class: "btn btn-default #{note.high? ? "active" : ""}" do %>
+          <%= f.radio_button :importance, :high, required: true %>
+          High
         <% end %>
       </div>
     </fieldset>
     <fieldset id="mood-fieldset">
-      <legend>How did <%= student.given_name %> end up feeling?</legend>
+      <legend>Select <%= student.given_name %>'s emotional state</legend>
       <div>
         <%= f.radio_button :mood, :good, class: "sr-only mood-radio", required: true %>
         <%= f.label :mood_good, class: "mood-img" do %>
@@ -64,8 +77,10 @@
       </div>
     </fieldset>
     <div class="form-group">
-      <%= f.label :text, "Why?" %>
-      <%= f.text_area :text, class: "form-control", rows: 5, placeholder: "Enter comment..." %>
+      <%= f.label :text, "Why?" %> <br/>
+      <!-- <div class="well card"> -->
+      <%= f.text_area :text, class: "well card textEntry", rows: 5, placeholder: "Enter comment..." %>
+      <!-- </div> -->
     </div>
 
     <%= f.submit class: "btn btn-wide" %>

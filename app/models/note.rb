@@ -15,6 +15,17 @@ class Note < ActiveRecord::Base
     where.not(mood: moods[:na]).exists?
   end
   
+  def self.good_mood_count
+    emotion_mood_count(:good)
+  end
+
+   def self.neutral_mood_count
+    emotion_mood_count(:neutral)
+  end
+
+  def self.bad_mood_count
+    emotion_mood_count(:bad)
+  end
   def self.good_mood_percent
     emotion_mood_percent(:good)
   end
@@ -39,5 +50,9 @@ class Note < ActiveRecord::Base
   
   def self.emotion_mood_percent mood
     (where(mood: moods[mood]).count * 100.0 / where.not(mood: moods[:na]).count).to_i
+  end
+
+  def self.emotion_mood_count mood
+    where(mood: moods[mood]).count
   end
 end

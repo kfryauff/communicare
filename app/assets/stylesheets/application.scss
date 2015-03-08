@@ -36,7 +36,7 @@ input, button {
 .subhead > a{
     color: #555;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .btn{
@@ -44,6 +44,9 @@ input, button {
 }
 #note-category-tablist{
 	margin: 10px 15px;
+}
+.navbar-default .navbar-brand {
+	color: #777;
 }
 
 @media (max-width: 1400px) {
