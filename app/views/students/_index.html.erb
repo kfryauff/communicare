@@ -26,21 +26,15 @@
     <h1 class="subhead col-xs-3">Sort By:</h1>
     <div class="col-xs-9">
     <% sort_categories.each do |text, attr| %>
-      <button type="button" class="btn btn-default"><span class="subhead"> <%= link_to text, url_with_query(request.path_info, "sort=#{attr}") %></span></button>
-      <% end %>
+      <button type="button" class="btn btn-default">
+        <span class="subhead"> <%= link_to text, url_with_query(sort: attr) %></span>
+      </button>
+    <% end %>
     </div>
  </section>
  <hr>
  <hr>
 
-<!--   <section class="row" id="sort-container">
-    <h2 class="col-xs-1">Sort by:</h2>
-    <ul class="list-inline col-xs-11">
-      <% sort_categories.each do |text, attr| %>
-      <li><%= link_to text, url_with_query(request.path_info, "sort=#{attr}") %></li>
-      <% end %>
-    </ul>
-  </section> -->
 <div>
   <ul class="list-unstyled">
     <% students.each do |student| %>
@@ -53,7 +47,6 @@
           <% end %>
         </div>
         <div class="media-body">
-
           <h2 class="media-heading"> 
            <span class="cardTitle">
             <%= link_to student.full_name, send(path_for_choosing_student, student) %>

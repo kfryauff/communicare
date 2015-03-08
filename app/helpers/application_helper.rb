@@ -5,8 +5,18 @@ module ApplicationHelper
       class: "btn-link pull-right"
   end
   
-  def url_with_query url, query
-    url + (url.include?('?') ? '&' : '?') + query
+  def url_with_query url, query = nil
+    if query.nil?
+      query = url
+      url = request.path_info
+    end
+    
+    query_string = query.reduce("") do |accum, obj|
+      name, val = obj
+      "#{accum}&#{name}=#{val}"
+    end
+    
+    url + (url.include?('?') ? '&' : '?') + query_string[1..-1]
   end
   
   def navbar_menuitems

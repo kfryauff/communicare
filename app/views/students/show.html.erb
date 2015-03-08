@@ -38,11 +38,11 @@
           Order By: <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-          <li> Importance: High to Low </li>
-          <li> Importance: Low to High </li>
-          <li> Date: Recent to Oldest </li>
-          <li> Date: Oldest to Recent </li>
-          <li> Creator: Alphabetical </li>
+          <li><%= link_to "Importance: High to Low", url_with_query(sort_attr: :importance, sort_order: :desc) %></li>
+          <li><%= link_to "Importance: Low to High", url_with_query(sort_attr: :importance, sort_order: :asc) %></li>
+          <li><%= link_to "Date: Recent to Oldest", url_with_query(sort_attr: :created_at, sort_order: :desc) %></li>
+          <li><%= link_to "Date: Oldest to Recent", url_with_query(sort_attr: :created_at, sort_order: :asc) %></li>
+          <li><%= link_to "Creator: Alphabetical", url_with_query(sort_by_creator: :true) %></li>
         </ul>
       </div>
       <ul class="nav nav-tabs">
@@ -57,9 +57,9 @@
     <ul class="tab-content" id="note-category-tabcontent">
       <li role="tabpanel" class="tab-pane active" id="public">
         <section>
-          <% if student.public_notes.has_text? %>
+          <% if public_notes.exists? %>
             <ul class="list-unstyled">
-              <%= render student.public_notes.with_text %>
+              <%= render public_notes %>
             </ul>
           <% else %>
             <p>No comments</p>
@@ -68,9 +68,9 @@
       </li>
       <li role="tabpanel" class="tab-pane" id="private">
         <section>
-          <% if student.private_notes(user: current_user).has_text? %>
+          <% if private_notes.exists? %>
             <ul class="list-unstyled">
-              <%= render student.private_notes(user: current_user).with_text %>
+              <%= render private_notes %>
             </ul>
           <% else %>
             <p>No comments</p>

@@ -19,6 +19,5 @@ class Student < ActiveRecord::Base
     notes.where(conditions)
       .where(resolution: Note.resolutions[:unresolved],
         privacy_status: Note.privacy_statuses[privacy_status])
-      .order(importance: :desc, created_at: :desc)
   end
 end
