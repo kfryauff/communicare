@@ -4,10 +4,10 @@
         font-size: 18px;
         margin: 0;
     }
-    > h2,
+  /*  > h2,
     a {
         color: #fff;
-    }
+    } */
 }
 
 .student {
@@ -24,6 +24,7 @@
     p {
         margin: 0;
     }
+
 }
 
 .student-blue {
@@ -32,6 +33,10 @@
 
 .student-gray {
     background-color: #898C93;
+}
+
+.studentTitle{
+   color: #29e;
 }
 
 .new_student {

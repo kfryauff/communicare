@@ -1,10 +1,15 @@
-<section class="media student student-gray">
+<!-- <section class="media student student-gray well"> -->
+<section class="media card">
   <div class="media-left">
     <%= image_tag student.image, height: 100, class: "media-object" %>
   </div>
   <div class="media-body">
-    <h2 class="media-heading"><%= student.full_name %></h2>
+    <h2 class="media-heading"><span class="attention studentTitle"><%= student.full_name %></span></h2>
     <p>Age <%= student.age %></p>
     <p>Program participant since <%= student.joined_at.strftime("%B %Y") %></p>
   </div>
 </section>
+              
+              
+          
+
