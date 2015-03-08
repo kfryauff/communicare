@@ -1,7 +1,6 @@
-<%= render "shared/main_nav", back_path: student_path(student), title: "New Note" %>
+<%= render "shared/main_nav" %>
 
 <main class="container" role="main">
-
   <%= render student %>
   <%= form_for [student, note] do |f| %>
     <% if note.errors.any? %>
