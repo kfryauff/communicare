@@ -57,7 +57,11 @@
           <p>Program participant since <%= student.joined_at.strftime('%B %Y') %></p>
         </div>
         <div class="media-right">
-          <button type="button" class="btn btn-default glyphicon glyphicon-comment" aria-hidden="true"> <%= link_to "", new_student_note_path(student) %></button>
+         
+           <%= link_to new_student_note_path(student) do %>
+            <span class="glyphicon glyphicon-comment" aria-hidden="true">
+           <% end %>
+          </span>
        </div>
 
       </section>
