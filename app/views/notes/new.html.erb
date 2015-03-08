@@ -30,27 +30,27 @@
     <fieldset>
       <legend>How important?</legend>
       <div class="btn-group" data-toggle="buttons"><!-- 
-        <%= f.label :importance_low, class: "btn btn-info #{note.low? ? "active" : ""}" do %>
+        <%= f.label :importance_low, class: "btn importanceBtn btn-info #{note.low? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :low, required: true %>
           Low
         <% end %>
-        <%= f.label :importance_med, class: "btn btn-warning #{note.med? ? "active" : ""}" do %>
+        <%= f.label :importance_med, class: "btn  importanceBtn btn-warning #{note.med? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :med, required: true %>
           Medium
         <% end %>
-        <%= f.label :importance_high, class: "btn btn-danger #{note.high? ? "active" : ""}" do %>
+        <%= f.label :importance_high, class: "btn importanceBtn btn-danger #{note.high? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :high, required: true %>
           High
         <% end %> <hr/> -->
-        <%= f.label :importance_low, class: "btn btn-default #{note.low? ? "active" : ""}" do %>
+        <%= f.label :importance_low, class: "btn importanceBtn btn-default #{note.low? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :low, required: true %>
           Low
         <% end %>
-        <%= f.label :importance_med, class: "btn btn-default #{note.med? ? "active" : ""}" do %>
+        <%= f.label :importance_med, class: "btn importanceBtn btn-default #{note.med? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :med, required: true %>
           Medium
         <% end %>
-        <%= f.label :importance_high, class: "btn btn-default #{note.high? ? "active" : ""}" do %>
+        <%= f.label :importance_high, class: "btn importanceBtn  btn-default #{note.high? ? "active" : ""}" do %>
           <%= f.radio_button :importance, :high, required: true %>
           High
         <% end %>
