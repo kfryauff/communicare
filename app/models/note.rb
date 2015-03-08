@@ -35,6 +35,10 @@ class Note < ActiveRecord::Base
     with_text.exists?
   end
   
+  def author_name
+    user.name
+  end
+  
   private
   
   def self.emotion_mood_percent mood

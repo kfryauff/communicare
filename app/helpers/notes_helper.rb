@@ -5,4 +5,12 @@ module NotesHelper
       title: "#{mood_name}: #{mood_percent}%", width: mood_percent,
       height: mood_percent
   end
+  
+  def importance_color importance
+    case importance
+    when "low" then "info"
+    when "med" then "warning"
+    when "high" then "danger"
+    end
+  end
 end

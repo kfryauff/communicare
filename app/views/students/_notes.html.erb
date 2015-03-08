@@ -13,7 +13,7 @@
     <h2>Comments</h2>
     <% if notes.has_text? %>
       <ul class="list-unstyled">
-        <%= render partial: "note_text", collection: notes.with_text, as: :note %>
+        <%= render notes.with_text %>
       </ul>
     <% else %>
       <p>No comments</p>
