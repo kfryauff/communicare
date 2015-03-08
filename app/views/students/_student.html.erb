@@ -1,15 +1,18 @@
 <!-- <section class="media student student-gray well"> -->
-<section class="media card">
+<section class="media well card mainCard">
   <div class="media-left">
-    <%= image_tag student.image, height: 100, class: "media-object" %>
+    <%= image_tag student.image, height: 90, class: "media-object" %>
   </div>
   <div class="media-body">
-    <h2 class="media-heading"><span class="attention studentTitle"><%= student.full_name %></span></h2>
+    <h2 class="media-heading"><span class="cardTitle"><%= student.full_name %></span></h2>
     <p>Age <%= student.age %></p>
-    <p>Program participant since <%= student.joined_at.strftime("%B %Y") %></p>
+    <p>Joined program: <%= student.joined_at.strftime("%B %Y") %></p>
+  </div>
+  <div class="media-right">
+ <button type="button" class="btn btn-default"><span class="subhead"> <%= link_to "Create New Note", new_student_note_path(student) %></span></button>
   </div>
 </section>
               
               
           
-
+ 

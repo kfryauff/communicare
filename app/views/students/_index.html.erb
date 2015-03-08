@@ -46,7 +46,7 @@
     <% students.each do |student| %>
     <li>
       <!-- <section class="media student student-blue"> -->
-      <section class="media well card">
+      <section class="media well card mainCard">
         <div class="media-left">
           <%= link_to send(path_for_choosing_student, student) do %>
             <%= image_tag student.image, height: 90, class: "media-object" %>

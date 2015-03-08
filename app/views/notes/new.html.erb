@@ -1,6 +1,7 @@
 <%= render "shared/main_nav", back_path: student_path(student), title: "New Note" %>
 
 <main class="container" role="main">
+
   <%= render student %>
   <%= form_for [student, note] do |f| %>
     <% if note.errors.any? %>
@@ -13,7 +14,8 @@
         </ul>
       </div>
     <% end %>
-    
+     <div class="mainStudentContent">
+
     <fieldset>
       <legend>What type of note is this?</legend>
       <% Note.categories.each do |category, _| %>
@@ -68,4 +70,5 @@
 
     <%= f.submit class: "btn btn-wide" %>
   <% end %>
+</div>
 </main>

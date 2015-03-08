@@ -1,5 +1,13 @@
-<li class="note">
-  <p><%= note.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
+<li class="well  card">
+	<div class="noteHeader">
+		<span class="noteHeaderItem-left"> <%= note.created_at.to_date.to_formatted_s(:long_ordinal) %> </span>
+		<span class="noteHeaderItem-middle"> Creator: <%= note.user_id %> </span>
+		<span class="noteHeaderItem-middle"> Importance Level: <%= note.importance %> </span>
+		<span class="noteHeaderItem-right"> Mood:  <%= note.mood %> </span>
+	</div>
+	<hr/>
+  <p>
+  </p>
   <p><%= note.text %></p>
   <p><%= button_to "mark resolved", status_note_path(note), method: :put, form_class: "clearfix", class: "btn-link pull-right" %></p>
 </li>

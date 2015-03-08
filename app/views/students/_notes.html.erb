@@ -1,6 +1,13 @@
 <% if notes.exists? %>
+
+<div class="mainStudentContent">
+  <hr/>
   <section>
-    <h2>Moods</h2>
+     <!-- <h2>Moods</h2>  -->
+    <div class="sectionTitle">
+    <span class="cardTitle" style="color:black;"> Moods </span>
+    </div>
+
     <% if notes.has_emotion_moods? %>
       <%= mood_percent_image("good", "Happy", notes) %>
       <%= mood_percent_image("neutral", "Neutral", notes) %>
@@ -9,8 +16,34 @@
       <p>No moods recorded</p>
     <% end %>
   </section>
+
+<hr/>
+  <ul class="nav nav-tabs">
+  <li role="presentation" class="active">
+      <a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a>
+  </li>
+  <li role="presentation">
+      <a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a>
+  </li>
+
+   <li role="presentation" class="dropdown" id="sortDropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Order By: <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li> Importance: High to Low </li>
+      <li> Importance: Low to High </li>
+      <li> Date: Recent to Oldest </li>
+      <li> Date: Oldest to Recent </li>
+      <li> Creator: Alphabetical </li>
+
+    </ul>
+    </ul>
+</div>
   <section>
-    <h2>Comments</h2>
+   <!--  <div class="sectionTitle">
+    <span class="cardTitle" style="color:black;"> Comments </span>
+  </div> -->
     <% if notes.has_text? %>
       <ul class="list-unstyled">
         <%= render partial: "note_text", collection: notes.with_text, as: :note %>
@@ -23,3 +56,5 @@
   <p><%= missing_msg %> for <%= student.given_name %>.</p>
   <p>Would you like to <%= link_to "make the first note", new_student_note_path(student), class: "normal-link" %>?</p>
 <% end %>
+
+</div>
