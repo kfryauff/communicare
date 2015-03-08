@@ -11,13 +11,13 @@ user1 = User.new(:name => "test", :email => "test@user.com", :password => "test"
 user1.save(:validate => false)
 
 # initial fake kids
-kid1 = Student.new(:given_name => "Lillybeth", :surname => "Serrano", :image => "uploads/kid1.png", :age => 12, :joined_at => "2012-08-30 12:34:23")
+kid1 = Student.new(:given_name => "Lillybeth", :surname => "Serrano", :image => "assets/images/kid1.png", :age => 12, :joined_at => "2012-08-30 12:34:23")
 kid1.save()
-kid2 = Student.new(:given_name => "Keagan", :surname => "Royce", :image => "uploads/kid2.png", :age => 11, :joined_at => "2012-09-27 01:14:23")
+kid2 = Student.new(:given_name => "Keagan", :surname => "Royce", :image => "assets/images/kid2.png", :age => 11, :joined_at => "2012-09-27 01:14:23")
 kid2.save()
-kid3 = Student.new(:given_name => "Trace", :surname => "Kingsley", :image => "uploads/kid3.png", :age => 12, :joined_at => "2012-10-28 10:41:26")
+kid3 = Student.new(:given_name => "Trace", :surname => "Kingsley", :image => "assets/images/kid3.png", :age => 12, :joined_at => "2012-10-28 10:41:26")
 kid3.save()
-kid4 = Student.new(:given_name => "Raymond", :surname => "Skully", :image => "uploads/kid4.png", :age => 11, :joined_at => "2012-11-29 10:13:23")
+kid4 = Student.new(:given_name => "Raymond", :surname => "Skully", :image => "assets/images/kid4.png", :age => 11, :joined_at => "2012-11-29 10:13:23")
 kid4.save()
 # kid5 = Student.new(:given_name => "Daren", :surname => "Demapan", :image => "uploads/kid5.png", :age => 12, :joined_at => "2012-12-29 10:44:23")
 # kid5.save()
