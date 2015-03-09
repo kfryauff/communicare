@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  resources :students, only: [:index, :new, :create, :show] do
+  resources :students, only: [:new, :create, :show] do
     resources :notes, only: [:new, :create]
-    get :new_note, on: :collection
+    member do
+      post :add
+      delete :remove
+    end
   end
   
   resources :notes, only: [] do
     put :status, on: :member
   end
   
+  resources :connections, only: [:index, :new] do
+    get :delete, on: :collection
+  end
+  
   # root 'home#index'
-  root 'students#index'
+  root 'connections#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

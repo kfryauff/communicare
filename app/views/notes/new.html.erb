@@ -1,7 +1,18 @@
 <%= render "shared/main_nav" %>
 
 <main class="container" role="main">
-  <%= render student %>
+  <section class="media well card mainCard">
+    <div class="media-left">
+      <%= link_to student do %>
+        <%= image_tag student.image, height: 90, class: "media-object" %>
+      <% end %>
+    </div>
+    <div class="media-body">
+      <h2 class="media-heading"><span class="cardTitle"><%= link_to student.full_name, student %></span></h2>
+      <p>Age <%= student.age %></p>
+      <p>Joined program: <%= student.joined_at.strftime("%B %Y") %></p>
+    </div>
+  </section>
   <%= form_for [student, note] do |f| %>
     <% if note.errors.any? %>
       <div class="error-notification">

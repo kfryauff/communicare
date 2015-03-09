@@ -2,6 +2,10 @@ class Student < ActiveRecord::Base
   has_many :notes
   has_and_belongs_to_many :users
   
+  def self.except_for_user user
+    where.not(id: user.student_ids)
+  end
+  
   def full_name
     "#{given_name} #{surname}"
   end

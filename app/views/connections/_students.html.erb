@@ -1,0 +1,53 @@
+<%= render "shared/main_nav" %>
+<main class="container" role="main">
+  <section class="btn-group-sm" role="group">
+    <h1 class="subhead col-xs-3">Sort By:</h1>
+    <div class="col-xs-9">
+    <% sort_categories.each do |text, attr| %>
+      <button type="button" class="btn btn-default">
+        <span class="subhead"> <%= link_to text, url_with_query(sort: attr) %></span>
+      </button>
+    <% end %>
+    </div>
+  </section>
+  <hr>
+  <hr>
+
+  <div>
+    <ul class="list-unstyled">
+      <% students.each do |student| %>
+      <li>
+        <section class="media well card mainCard">
+          <div class="media-left">
+            <% if show_link %>
+              <%= link_to student do %>
+                <%= image_tag student.image, height: 90, class: "media-object" %>
+              <% end %>
+            <% else %>
+              <%= image_tag student.image, height: 90, class: "media-object" %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <h2 class="media-heading"> 
+              <span class="cardTitle">
+                <% if show_link %>
+                  <%= link_to student.full_name, student %>
+                <% else %>
+                  <%= student.full_name %>
+                <% end %>
+              </span>
+            </h2>
+  
+            <p>Age <%= student.age %></p>
+            <p>Program participant since <%= student.joined_at.strftime('%B %Y') %></p>
+          </div>
+          <div class="media-right">
+            <%= render student_action, student: student %>
+          </div>
+  
+        </section>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</main>

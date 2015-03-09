@@ -1,19 +1,4 @@
 class StudentsController < ApplicationController
-  def index
-    # puts "**** \n"
-    # puts current_user.students()
-    # puts "**** \n"
-    sort_by = params[:sort] || :given_name
-    self.students = Student.order(sort_by)
-  end
-
-  def add
-    if (params[:student_id] != nil)
-      selected_student = Student.find(params[:student_id])
-      current_user.students << selected_student
-    end
-  end
-  
   def new
     self.student = Student.new
   end
@@ -46,9 +31,18 @@ class StudentsController < ApplicationController
     end
   end
   
-  def new_note
-    sort_by = params[:sort] || :given_name
-    self.students = Student.order(sort_by)
+  def add
+    student = Student.find(params[:id])
+    current_user.students << student
+    
+    redirect_to connections_path
+  end
+  
+  def remove
+    student = Student.find(params[:id])
+    current_user.students.destroy(student)
+    
+    redirect_to connections_path
   end
   
   private

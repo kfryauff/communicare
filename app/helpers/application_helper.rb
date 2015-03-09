@@ -20,13 +20,10 @@ module ApplicationHelper
   end
   
   def navbar_menuitems
-    [["Home", students_path],
-      # ["Create new note", new_note_students_path],
-      ["Add students to your home", "#"],
-      ["Remove students from your home", "#"],
+    [["Home", connections_path],
+      ["Add students to your home", new_connection_path],
+      ["Remove students from your home", delete_connections_path],
       ["Create a new student profile", new_student_path],
-      # ["Delete a student profile", "#"]]
-      # ["Logout", ]
     ]
   end
 end
