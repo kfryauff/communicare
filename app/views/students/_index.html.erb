@@ -1,4 +1,4 @@
-<nav role="navigation">
+<!--  <nav role="navigation">
   <div id="main-nav" class="row">
     <%= link_to root_path, class: "col-xs-2" do %>
       <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
@@ -13,41 +13,66 @@
         <% end %>
       <% end %>
     </div>
-  </div>
-  <div class="container">
+  </div> -->
+<!--   <div class="container">
     <%= render "shared/search", model: :student, search_topic: "Participant", attr: :name %>
     <%= logout_link %>
-  </div>
-</nav>
+  </div> -->
+<!-- </nav>  -->
 
 <main class="container" role="main">
-  <section class="row" id="sort-container">
-    <h2 class="col-xs-1">Sort by:</h2>
-    <ul class="list-inline col-xs-11">
-      <% sort_categories.each do |text, attr| %>
-      <li><%= link_to text, url_with_query(request.path_info, "sort=#{attr}") %></li>
-      <% end %>
-    </ul>
-  </section>
-  
+
+ <section class="btn-group-sm" role="group">
+    <h1 class="subhead col-xs-3">Sort By:</h1>
+    <div class="col-xs-9">
+    <% sort_categories.each do |text, attr| %>
+      <button type="button" class="btn btn-default">
+        <span class="subhead"> <%= link_to text, url_with_query(sort: attr) %></span>
+      </button>
+    <% end %>
+    </div>
+ </section>
+ <hr>
+ <hr>
+
+<div>
   <ul class="list-unstyled">
-    <% students.each do |student| %>
+    <% current_user.students.each do |student| %>
     <li>
-      <section class="media student student-blue">
+      <!-- <section class="media student student-blue"> -->
+      <section class="media well card mainCard">
         <div class="media-left">
           <%= link_to send(path_for_choosing_student, student) do %>
-            <%= image_tag student.image, height: 100, class: "media-object" %>
+            <%= image_tag student.image, height: 90, class: "media-object" %>
           <% end %>
         </div>
         <div class="media-body">
-          <h2 class="media-heading">
+          <h2 class="media-heading"> 
+           <span class="cardTitle">
             <%= link_to student.full_name, send(path_for_choosing_student, student) %>
-          </h2>
+            </span>
+          </h2>      
+
           <p>Age <%= student.age %></p>
           <p>Program participant since <%= student.joined_at.strftime('%B %Y') %></p>
         </div>
+        <div class="media-right">
+         
+           <%= link_to new_student_note_path(student) do %>
+            <span class="glyphicon glyphicon-comment" aria-hidden="true">
+           <% end %>
+          </span>
+       </div>
+
       </section>
+      <!-- <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> -->
+
     </li>
+     <!--  <%= link_to new_student_path, class: "pull-right" do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <span class="sr-only">Add participant</span>
+        <% end %> -->
     <% end %>
   </ul>
+</div>
 </main>

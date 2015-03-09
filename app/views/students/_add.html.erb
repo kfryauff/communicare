@@ -1,0 +1,17 @@
+<main class="container" role="main">
+  
+    <% students.each do |student| %>
+        <div class="student col-md-2">
+          <%= link_to send(path_for_choosing_student, student) do %>
+            <%= image_tag student.image, height: 100, class: "" %>
+          <% end %>
+        </div>
+        <!-- <div class="media-body">
+          <h2 class="media-heading">
+            <%= link_to student.full_name, send(path_for_choosing_student, student) %>
+          </h2>
+          <p>Age <%= student.age %></p>
+          <p>Program participant since <%= student.joined_at.strftime('%B %Y') %></p>
+        </div> -->
+    <% end %>
+</main>

@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   def new
     self.student = Student.find(params[:student_id])
-    self.note = student.notes.build
+    self.note = student.notes.build(mood: Note.moods[:na])
   end
   
   def create

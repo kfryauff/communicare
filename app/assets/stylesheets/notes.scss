@@ -1,7 +1,7 @@
 #note-category-tablist {
-    margin-bottom: 3px;
     border: 0;
-    font-size: 18px;
+    margin: 10px 15px;
+  /*  font-size: 18px; */
     > li {
         width: 50%;
         > a {
@@ -17,6 +17,20 @@
     }
 }
 
+.importanceBtn{
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+#expText{
+    margin-bottom: -10px;
+}
+legend{
+    font-size: 16px;
+    color: #777;
+    margin-top: 20px;
+}
 #note-category-tabcontent {
     margin-top: 5px;
     padding-left: 0;
@@ -46,6 +60,37 @@
 }
 
 .note {
-    background-color: #898C93;
     padding: 5px 7px 0;
+}
+
+/* lines A, B, and C are voodoo to make the mood images line up with the N/A text.
+ * (Perhaps we should consider just making N/A an equally sized image.)
+ * Ideas were stolen from here: http://stackoverflow.com/a/2744005/830988
+ */
+
+#mood-fieldset > div {
+    height: 90px; /* A */
+    > label {
+        line-height: 90px; /* B */
+    }
+}
+
+.mood-radio:checked + label {
+    border: 3px solid #898C93;
+}
+
+.mood-img {
+    vertical-align: top; /* C */
+    > img {
+        margin: 0 10px;
+        height: 65px;
+        width: 65px;
+    }
+
+}
+
+#note_mood_na-label {
+    padding: 0 10px;
+    font-size: 30px;
+    font-weight: 400;
 }

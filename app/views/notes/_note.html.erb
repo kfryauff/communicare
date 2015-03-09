@@ -1,19 +1,13 @@
-<li>
-  <section class="media student student-gray">
-    <div class="media-left">
-      <%= link_to note.student do %>
-        <%= image_tag note.student.image, height: 100, class: "media-object" %>
-      <% end %>
-    </div>
-    <div class="media-body">
-      <h2 class="media-heading">
-        <%= link_to note.student.full_name, note.student %>
-      </h2>
-      <p>Age <%= note.student.age %></p>
-      <p>Program participant since <%= note.student.joined_at.strftime('%B %Y') %></p>
-      <p><%= note.created_at.to_date.to_formatted_s(:long_ordinal) %></p>
-      <p><%= note.text %></p>
-      <p><%= button_to "mark resolved", status_note_path(note), method: :put, form_class: "clearfix", class: "btn-link pull-right" %></p>
-    </div>
-  </section>
+<li class="well card">
+  <div class="noteHeader">
+    <span class="noteHeaderItem-left"> <%= note.created_at.to_date.to_formatted_s(:long_ordinal) %> </span>
+    <span class="noteHeaderItem-middle"> Creator: <%= note.author_name %> </span>
+    <span class="noteHeaderItem-middle"> Importance Level: <%= note.importance %> </span>
+    <span class="noteHeaderItem-right"> Mood:  <%= t(note.mood, scope: [:activerecord, :attributes, :note, :moods]) %> </span>
+  </div>
+  <hr/>
+  <p>
+  </p>
+  <p><%= note.text %></p>
+  <p><%= button_to "mark resolved", status_note_path(note), method: :put, form_class: "clearfix", class: "btn-link pull-right" %></p>
 </li>

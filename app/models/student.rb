@@ -11,13 +11,14 @@ class Student < ActiveRecord::Base
   end
   
   def private_notes conditions = {}
-    unresolved_notes(:private_).where(conditions)
+    unresolved_notes(:private_, conditions)
   end
   
   private
   
-  def unresolved_notes privacy_status
-    notes.where(resolution: Note.resolutions[:unresolved],
-      privacy_status: Note.privacy_statuses[privacy_status])
+  def unresolved_notes privacy_status, conditions = {}
+    notes.where(conditions)
+      .where(resolution: Note.resolutions[:unresolved],
+        privacy_status: Note.privacy_statuses[privacy_status])
   end
 end

@@ -1,5 +1,4 @@
-<% if false then %>
-	<%= render "index", title: "Participants", add_student: true, path_for_choosing_student: :student_path %>
-<% else %>
-	<%= render "home", title: "Participants", add_student: true, path_for_choosing_student: :student_path %>
-<% end %>
+
+<%= render "shared/main_nav", back_path: students_path, title: "New Participant" %>
+
+<%= render "index", title: "Participants", add_student: true, path_for_choosing_student: :student_path %>
