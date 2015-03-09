@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
   def index
+    # puts "**** \n"
+    # puts current_user.students()
+    # puts "**** \n"
     sort_by = params[:sort] || :given_name
     self.students = Student.order(sort_by)
   end
