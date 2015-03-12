@@ -23,7 +23,33 @@
 @import "students";
 @import "notes";
 
+// Variables
+$bg-colour: #FEFEFE;
+$lighter-blue: #84d4fa;
+$darker-blue: #3e9ad2;
+$light-purple: #b78cba;
+
 // General CSS
+html {
+    height: auto;
+    min-height: 100%;
+}
+
+body {
+    font-size: 14px;
+    color: #777; 
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 400;
+    background: url("bg_warm.jpg");
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    padding-top: 80px;
+    padding-bottom: 60px;
+    letter-spacing: 0.005em;
+}
+
 .center {
 	text-align: center;
 }
@@ -40,13 +66,30 @@ input, button {
 }
 
 .btn{
-	border: 1px solid #898C93;
+	border: 1px solid $darker-blue; /* #898C93; */
+    color: $darker-blue;
+    background: $lighter-blue;
+    text-shadow: 0 2px 3px rgba(255,255,255,0.8);
+    .subhead > a {
+        color: $darker-blue;
+    }
+    :hover .subhead > a{
+        color: $darker-blue;
+    }
 }
-#note-category-tablist{
+
+.btn, .btn default {
+    &.active {
+        color: $darker-blue;
+    }
+}
+
+#note-category-tablist {
 	margin: 10px 15px;
 }
+
 .navbar-default .navbar-brand {
-	color: #777;
+	color: white;
 }
 
 label{
@@ -82,6 +125,7 @@ label{
         float: none;
         margin: 15px 0;
     }
+
     /* since 3.1.0 */
     .navbar-collapse.collapse.in { 
         display: block!important;
